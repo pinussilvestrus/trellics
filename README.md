@@ -1,0 +1,1 @@
+> simple trello board with own style with angular for andserve
