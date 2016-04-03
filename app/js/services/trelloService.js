@@ -34,10 +34,11 @@ angular.module("trelloService",[])
 				console.log(data);
 				$rootScope.$apply(function() {
 					$rootScope.data = data;
+					$rootScope.loading = false;
 				});
 			};
 
-			Trello.get("/boards/" + delivreshBoardID, getSuccess);
+			Trello.get("/boards/" + delivreshBoardID + "/lists?cards=open&card_fields=all&fields=name", getSuccess);
 		};
 
 		return trello;

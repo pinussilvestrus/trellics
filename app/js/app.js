@@ -2,5 +2,6 @@ angular.module("mainApp", [
   'ngRoute',
   'ui.materialize',
   'trelloService',
-  'mainController'
+  'mainController',
+  'cardDirective'
 ])
