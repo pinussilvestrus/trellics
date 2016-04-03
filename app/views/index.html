@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>andserve Scrum Board</title>
+    <!-- favicon -->
+    <link rel="icon" href="/app/resources/andserve-icon.png" type="image/x-icon" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/app/resources/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+
+    <!-- Bootstrap Core CSS -->
+    <!-- themes (*preferred):
+      cerulean, cosmo*, cyborg, darkly*, flatly*, journal, lumen, paper, readable, sandstone*, simplex*, slate*, spacelab, superhero*, united*, yeti* -->
+    <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
+    <!-- awesome font -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!--Import jQuery before materialize.js-->
+    <link type="text/css" rel="stylesheet" href="/app/styles/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!-- Material icons https://www.google.com/design/icons/-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+
+</head>
+<body ng-app="mainApp" ng-controller="mainController as main">
+  <div class="main" ng-init="initialize()">
+    <div class="container">
+      <div class="center-align">
+        <h1> Andserve delivresh project </h1>
+        <p>{{$root.data}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- materialize scripts -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/app/styles/materialize/js/materialize.min.js"></script>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="/scripts/angular-materialize/src/angular-materialize.js"></script>
+
+  <script src="https://api.trello.com/1/client.js?key=1602b56189690449876e15570cb2a95f"></script>
+
+  <script type="text/javascript" src="/app/js/services/trelloService.js"></script>
+  <script type="text/javascript" src="/app/js/controller/mainController.js"></script>
+	<script type="text/javascript" src="/app/js/app.js"></script>
+
+</body>
+</html>

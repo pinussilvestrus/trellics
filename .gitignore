@@ -1,0 +1,7 @@
+/log/*.log
+/tmp
+.idea/*
+.idea/workspace.xml
+.workspace
+*.iml
+node_modules/
