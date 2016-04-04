@@ -6,7 +6,17 @@ var gulp 	   = require("gulp"),
 	uglify	   = require("gulp-uglify"),
 	rename	   = require("gulp-rename"),
 	concat	   = require("gulp-concat"),
-	minifyHtml = require("gulp-minify-html");
+	minifyHtml = require("gulp-minify-html"),
+	inject = require('gulp-inject');
+
+gulp.task('inject:libs', function () {
+  var target = gulp.src('./app/views/index.html');
+  // It's not necessary to read the files (will speed up things), we're only after their paths:
+  var sources = gulp.src(['./app/lib/**/*.js', './app/lib/**/*.css'], {read: false});
+
+  return target.pipe(inject(sources))
+    .pipe(gulp.dest('./app/views/'));
+});
 
 gulp.task("minimizeHtml", function(){
 		var index = gulp.src("./*.html")
