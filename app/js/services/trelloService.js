@@ -8,8 +8,7 @@ angular.module("trelloService",[])
 		var apiUrl = "https://api.trello.com/1/";
 
 		var authenticationSuccess = function() {
-			console.log("success");
-			trello.getBoard();
+			trello.initializeBoards();
 		};
 
 		var authenticationFailure = function() {
@@ -29,16 +28,27 @@ angular.module("trelloService",[])
 			});
 		};
 
-		trello.getBoard = function() {
+		trello.initializeBoards = function() {
 			var getSuccess = function(data) {
-				console.log(data);
+				$rootScope.$apply(function() {
+					console.log(data);
+					$rootScope.loading = false;
+					$rootScope.boards = data;
+				});
+			};
+			Trello.get("/members/me/boards", getSuccess);
+		};
+
+		trello.getBoard = function(id) {
+			trello.init();
+			var getSuccess = function(data) {
 				$rootScope.$apply(function() {
 					$rootScope.data = data;
 					$rootScope.loading = false;
 				});
 			};
 
-			Trello.get("/boards/" + delivreshBoardID + "/lists?cards=open&card_fields=all&fields=name", getSuccess);
+			Trello.get("/boards/" + id + "/lists?cards=open&card_fields=all&fields=name", getSuccess);
 		};
 
 		return trello;

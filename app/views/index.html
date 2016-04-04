@@ -23,8 +23,7 @@
     <!-- awesome font -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <!--Import jQuery before materialize.js-->
-    <link type="text/css" rel="stylesheet" href="/app/styles/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
     <!-- Material icons https://www.google.com/design/icons/-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -34,28 +33,43 @@
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController as main">
-  <div class="main" ng-init="initialize()">
+  <div class="create center-align" ng-if="!$root.isConnected()">
+    <h3>Create Trello Board Screenshot with fancy style</h3>
+    <a class="waves-effect waves-light btn" ng-click="initialize()">
+      <i class="material-icons left">cloud</i>
+        Mit Trello verbinden</a>
+  </div>
+  <div class="main" ng-if="$root.isConnected()" ng-init="initialize()">
     <i class="fa fa-spinner fa-spin" ng-if="$root.loading"></i>
     <div class="main">
       <div class="center-align">
-        <h1> Andserve delivresh project </h1>
+        <h1> My Trello boards </h1>
+        <a class="waves-effect waves-light btn" id="btnSave">
+          <i class="material-icons left">cloud</i>
+            Download Board</a>
+        <div ng-hide="$root.loading">
+          <div class="collection">
+            <div ng-repeat="board in $root.boards">
+              <a href="#!" class="collection-item" ng-click="getBoard(board.shortLink)">{{board.name}}</a>
+            </div>
+         </div>
       </div>
-      <div class="row">
+      <div class="row" id="board">
         <div ng-repeat="list in $root.data track by $index" class="col-xs-12 col-md-3 col-sm-4" style="padding: 0px">
           <list model="list"></list>
         </div>
       </div>
     </div>
   </div>
-  <!-- materialize scripts -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="/app/styles/materialize/js/materialize.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/app/lib/html2canvas.js"></script>
+  <script type="text/javascript" src="/app/lib/canvas2image.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
-
-  <script src="/scripts/angular-materialize/src/angular-materialize.js"></script>
 
   <script src="https://api.trello.com/1/client.js?key=1602b56189690449876e15570cb2a95f"></script>
 

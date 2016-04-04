@@ -9,7 +9,7 @@ angular.module("cardDirective", [])
           model: '='
         },
         link: function(scope) {
-          console.log(scope.model);
+          
         }
       };
     })
