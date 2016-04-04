@@ -36,12 +36,12 @@
 <body ng-app="mainApp" ng-controller="mainController as main">
   <div class="main" ng-init="initialize()">
     <i class="fa fa-spinner fa-spin" ng-if="$root.loading"></i>
-    <div class="container">
+    <div class="main">
       <div class="center-align">
         <h1> Andserve delivresh project </h1>
       </div>
       <div class="row">
-        <div ng-repeat="list in $root.data track by $index" class="col-md-3 col-sm-3 col-xs-12">
+        <div ng-repeat="list in $root.data track by $index" class="col-xs-12 col-md-3 col-sm-4" style="padding: 0px">
           <list model="list"></list>
         </div>
       </div>

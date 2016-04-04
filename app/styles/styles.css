@@ -71,8 +71,23 @@ h6 {
 	font-size: 200px;
 }
 
-.list {
+.list_header {
 	padding: 10px;
-	background-color: #E0F2F1;
-	margin: 5px;
+
+}
+
+.list {
+	background-color: #546E7A;
+	margin: 10px;
+}
+
+.list_content {
+	height: 500px;
+	overflow: scroll;
+	background-color: #ECEFF1;
+	width: 100%;
+}
+
+.card {
+	margin: 10px;
 }
