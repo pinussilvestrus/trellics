@@ -73,7 +73,6 @@ h6 {
 
 .list_header {
 	padding: 10px;
-
 }
 
 .list {
@@ -82,8 +81,8 @@ h6 {
 }
 
 .list_content {
-	height: 500px;
-	overflow: scroll;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: #ECEFF1;
 	width: 100%;
 }

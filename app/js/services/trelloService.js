@@ -31,7 +31,7 @@ angular.module("trelloService",[])
 		trello.initializeBoards = function() {
 			var getSuccess = function(data) {
 				$rootScope.$apply(function() {
-					console.log(data);
+					$rootScope.boards = [];
 					$rootScope.loading = false;
 					$rootScope.boards = data;
 				});
