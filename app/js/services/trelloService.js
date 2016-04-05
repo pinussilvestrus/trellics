@@ -45,6 +45,7 @@ angular.module("trelloService",[])
 				$rootScope.$apply(function() {
 					$rootScope.data = data;
 					$rootScope.loading = false;
+					$rootScope.initializeTimeline();
 				});
 			};
 

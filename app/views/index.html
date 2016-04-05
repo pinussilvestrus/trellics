@@ -50,6 +50,10 @@
     <div class="main">
       <div class="center-align">
         <h1> My Trello boards </h1>
+        <a class="waves-effect waves-light btn" ng-click="logout()">
+          <i class="material-icons left">exit_to_app</i>
+            Ausloggen</a>
+        <div class="spacer10"></div>
         <div ng-hide="$root.loading">
           <div class="collection">
             <div ng-repeat="board in $root.boards">
@@ -59,38 +63,43 @@
        </div>
       </div>
 
-      <div class="row">
-        <div class="col s12">
-          <ul class="tabs">
-            <li class="tab col s3"><a href="#board" class="teal-text lighten-2">Board</a></li>
-            <li class="tab col s3"><a href="#timeline" class="teal-text lighten-2" ng-click="initializeTimeline()">Timeline</a></li>
-          </ul>
-        </div>
-        <div class="row" id="board">
-          <h3 class="center-align">Trello Board</h3>
-          <div ng-repeat="list in $root.data track by $index" class="col-xs-12 col-md-3 col-sm-4" style="padding: 0px">
-            <list model="list"></list>
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a href="#board" class="teal-text lighten-2 active boardNav">Board</a></li>
+              <li class="tab col s3"><a href="#timeline" class="teal-text lighten-2 timeLineNav">Timeline</a></li>
+            </ul>
+          </div>
+          <div class="row" id="board">
+            <h3 class="center-align">Trello Board</h3>
+            <div ng-repeat="list in $root.data track by $index" class="col-xs-12 col-md-3 col-sm-4" style="padding: 0px">
+              <list model="list"></list>
+            </div>
+          </div>
+
+
+          <div id="timeline">
+            <h3 class="center-align">Timeline aller Karten</h3>
+            <timeline>
+              <timeline-event ng-repeat="event in $root.events" side="{{event.side}}">
+                <timeline-badge class="{{event.badgeClass}}">
+                  <i class="glyphicon {{event.badgeIconClass}}"></i>
+                </timeline-badge>
+                <timeline-panel class="{{event.badgeClass}}">
+                  <timeline-heading>
+                    <h4>{{event.title}}</h4>
+                  </timeline-heading>
+                  <p>{{event.content}}</p>
+                </timeline-panel>
+              </timeline-event>
+            </timeline>
           </div>
         </div>
 
-
-        <div id="timeline">
-          <h3 class="center-align">Timeline aller Karten</h3>
-          <timeline>
-            <timeline-event ng-repeat="event in events" side="{{event.side}}">
-              <timeline-badge class="{{event.badgeClass}}">
-                <i class="glyphicon {{event.badgeIconClass}}"></i>
-              </timeline-badge>
-              <timeline-panel class="{{event.badgeClass}}">
-                <timeline-heading>
-                  <h4>{{event.title}}</h4>
-                </timeline-heading>
-                <p>{{event.content}}</p>
-              </timeline-panel>
-            </timeline-event>
-          </timeline>
-        </div>
-      </div>
+        <!-- info bar -->
+    		<div class="info_bar" ng-hide="hideInfoBar" ng-click="hideInfoBar = true">
+    			<p class="info_bar__element">Falls die Navigation in den Tabs nicht funktionieren, bitte die Seite neuladen!</p>
+    		</div>
     </div>
   </div>
 
