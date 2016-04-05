@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>andserve Scrum Board</title>
+    <title>Trellics - Trello Statistiken für dich!</title>
     <!-- favicon -->
     <link rel="icon" href="/app/resources/andserve-icon.png" type="image/x-icon" />
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -39,8 +39,9 @@
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController as main">
+  <div class="spacer40"></div>
   <div class="create center-align" ng-if="!$root.isConnected()">
-    <h3>Create Trello Board Screenshot with fancy style</h3>
+    <h3>Erstelle fancy Trello-Statistiken!</h3>
     <a class="waves-effect waves-light btn" ng-click="initialize()">
       <i class="material-icons left">cloud</i>
         Mit Trello verbinden</a>
@@ -49,7 +50,9 @@
     <i class="fa fa-spinner fa-spin" ng-if="$root.loading"></i>
     <div class="main">
       <div class="center-align">
-        <h1> My Trello boards </h1>
+        <h1> Meine Trello Boards </h1>
+        <h3>Hallo <span><b>{{$root.userData.username}}</b></span></h3>
+        <div class="spacer20"></div>
         <a class="waves-effect waves-light btn" ng-click="logout()">
           <i class="material-icons left">exit_to_app</i>
             Ausloggen</a>
@@ -101,6 +104,12 @@
     			<p class="info_bar__element">Falls die Navigation in den Tabs nicht funktionieren, bitte die Seite neuladen!</p>
     		</div>
     </div>
+  </div>
+
+  <div class="copyright">
+    <a href="https://niklaskiefer.de" target="_blank">
+      <i class="fa fa-copyright"></i> 2016  Niklas Kiefer
+    </a>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

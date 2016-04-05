@@ -7,6 +7,8 @@ angular.module("mainApp", [
 ])
 .run(function($rootScope) {
   $rootScope.data = [];
+  $rootScope.boards = [];
+  $rootScope.userData = {};
 
   /**
   }

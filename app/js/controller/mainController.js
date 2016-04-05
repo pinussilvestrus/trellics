@@ -17,6 +17,7 @@ angular.module("mainController", ["trelloService"])
 			$rootScope.data = [];
 			$rootScope.boards = [];
 			$rooScope.events = [];
+			$rootScope.userData = {};
 		};
 
 		$scope.initializeTimeline = function() {

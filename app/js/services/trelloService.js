@@ -8,6 +8,7 @@ angular.module("trelloService",[])
 		var apiUrl = "https://api.trello.com/1/";
 
 		var authenticationSuccess = function() {
+			trello.getUserData();
 			trello.initializeBoards();
 		};
 
@@ -26,6 +27,15 @@ angular.module("trelloService",[])
 			  success: authenticationSuccess,
 			  error: authenticationFailure
 			});
+		};
+
+		trello.getUserData = function() {
+			var getSuccess = function(data) {
+				$rootScope.userData = data;
+				console.log(data);
+			};
+
+			Trello.get("/members/me", getSuccess);
 		};
 
 		trello.initializeBoards = function() {

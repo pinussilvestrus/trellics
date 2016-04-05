@@ -92,6 +92,7 @@ h6 {
 	margin: 10px;
 }
 
+
 .info_bar {
   position: fixed;
   bottom: 0;
@@ -122,4 +123,18 @@ h6 {
   display: inline-block;
   font-size: 180%;
   text-align: center;
+}
+
+.copyright {
+	position: fixed;
+	bottom: 5px;
+	left: 5px;
+}
+
+.copyright a {
+	color: #9E9E9E;
+}
+
+.copyright a:hover {
+	color: black;
 }
