@@ -2,7 +2,8 @@ angular.module("mainApp", [
   'ngRoute',
   'trelloService',
   'mainController',
-  'cardDirective'
+  'cardDirective',
+  'angular-timeline'
 ])
 .run(function($rootScope) {
   $rootScope.isConnected = function() {
