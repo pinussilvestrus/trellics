@@ -4,7 +4,8 @@
   "main": "server.js",
   "description": "andserve website application",
   "scripts": {
-    "start": "gulp inject:libs && nodemon server.js"
+    "build": "gulp inject:libs && nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
