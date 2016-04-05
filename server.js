@@ -10,9 +10,6 @@ app.use(favicon(__dirname + "/app/resources/andserve-icon.png"));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
-// load node modules
-app.use('/scripts', express.static(__dirname + '/node_modules')); // npm install before!
-
 // include basic content
 app.use(express.static(__dirname));
 

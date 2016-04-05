@@ -1,16 +1,17 @@
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
 	color: #424242;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 p {
 	color:#424242;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 a {
 	color: #4A90E2;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway',	sans-serif;
+	font-weight: bold;
 }
 
 a:hover, a:active {

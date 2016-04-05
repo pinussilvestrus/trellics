@@ -7,7 +7,8 @@ var gulp 	   = require("gulp"),
 	rename	   = require("gulp-rename"),
 	concat	   = require("gulp-concat"),
 	minifyHtml = require("gulp-minify-html"),
-	inject = require('gulp-inject');
+	inject = require('gulp-inject'),
+	watch = require('gulp-watch');
 
 gulp.task('inject:libs', function () {
   var target = gulp.src('./app/views/index.html');
@@ -87,3 +88,4 @@ gulp.task("concat", function(){
 	})
 
 gulp.task("production", ["minimizeHtml", "minifyCss", "moveResources", "minifyJs", "concat"]);
+gulp.task("build", ["inject:libs"])
