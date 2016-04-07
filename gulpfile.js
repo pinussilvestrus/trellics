@@ -20,50 +20,42 @@ gulp.task('inject:libs', function () {
 });
 
 gulp.task("minimizeHtml", function(){
-		var index = gulp.src("./*.html")
-			.pipe(minifyHtml({empty: true}))
-			.pipe(gulp.dest("./production"));
-		var error = gulp.src("./app/views/*.html")
+		var views = gulp.src("./app/views/*.html")
 			.pipe(minifyHtml({empty: true}))
 			.pipe(gulp.dest("./production/app/views"));
-		var pages = gulp.src("./app/views/projekte/*.html")
+		var directives = gulp.src("./app/js/directives/*.html")
 			.pipe(minifyHtml({empty: true}))
-			.pipe(gulp.dest("./production/app/views/projekte"));
-		return merge(index,error,pages);
+			.pipe(gulp.dest("./production/app/js/directives/"));
+		return merge(views,directives);
 	});
 
 gulp.task("minifyCss", function(){
 		var style = gulp.src("./app/styles/*.css")
-			.pipe(uncss({
-				html: ["./*.html","./app/views/*.html","./app/views/projekte/*.html"]
-				}))
 			.pipe(minifyCss({compatibility: 'ie8'}))
 			.pipe(gulp.dest("./production/app/styles"));
-		var materialize = gulp.src("./app/styles/materialize/css/materialize.css")
-			.pipe(uncss({
-				html: ["./*.html","./app/views/*.html","./app/views/projekte/*.html"]
-				}))
+		var materialize = gulp.src("./app/lib/materialize.min.css")
 			.pipe(minifyCss({compatibility: 'ie8'}))
-			.pipe(rename("/materialize.min.css"))
-			.pipe(gulp.dest("./production/app/styles/materialize/css"));
+			.pipe(gulp.dest("./production/app/lib"));
 		return merge(style, materialize);
 	});
 
 gulp.task("minifyJs", function(){
-		var materialize = gulp.src("./app/styles/materialize/js/materialize.js")
-			.pipe(uglify())
-			.pipe(rename("/materialize.min.js"))
-			.pipe(gulp.dest("./production/app/styles/materialize/js"))
-		var routes = gulp.src("./routes/*.js")
-			.pipe(uglify())
-			.pipe(gulp.dest("./production/routes"))
-		var service = gulp.src("./app/js/services/*.js")
+		var services = gulp.src("./app/js/services/*.js")
 			.pipe(uglify({mangle: false}))
 			.pipe(gulp.dest("./production/app/js/services/"))
+		var directives = gulp.src("./app/js/directives/*.js")
+			.pipe(uglify({mangle: false}))
+			.pipe(gulp.dest("./production/app/js/directives/"))
+		var controller = gulp.src("./app/js/controller/*.js")
+			.pipe(uglify({mangle: false}))
+			.pipe(gulp.dest("./production/app/js/controller/"))
 		var scripts = gulp.src("./app/js/*.js")
 			.pipe(uglify({mangle: false}))
 			.pipe(gulp.dest("./production/app/js/"))
-		merge(routes, service, scripts, materialize);
+		var libs = gulp.src("./app/lib/**/*.js")
+			.pipe(uglify({mangle: false}))
+			.pipe(gulp.dest("./production/app/lib/"))
+		merge(controller, services, scripts, libs, directives);
 	});
 
 gulp.task("moveResources", function(){
@@ -75,13 +67,12 @@ gulp.task("moveResources", function(){
 			.pipe(gulpCopy("./production/"));
 		/*var modules = gulp.src("./node_modules/**\/*")
 			.pipe(gulpCopy("./production/"))*/
-		var fonts = gulp.src("./app/styles/materialize/font/**/*")
-			.pipe(gulpCopy("./production/"))
 		merge(images,packages,server/*,modules*/);
 	});
 
 gulp.task("concat", function(){
-		var js = gulp.src(["./production/app/js/services/*.js","./production/app/js/*.js","./production/app/styles/materialize/**/*.js"])
+		var js = gulp.src(["./production/app/js/services/*.js","./production/app/js/*.js",
+		"./production/app/lib/**/*.js", "./production/app/js/directives/*.js", "./production/app/js/controller/*.js"])
 			.pipe(concat("main.js"))
 			.pipe(gulp.dest("./production/concat"));
 		merge(js);

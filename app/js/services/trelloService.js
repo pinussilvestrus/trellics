@@ -32,7 +32,6 @@ angular.module("trelloService",[])
 		trello.getUserData = function() {
 			var getSuccess = function(data) {
 				$rootScope.userData = data;
-				console.log(data);
 			};
 
 			Trello.get("/members/me", getSuccess);

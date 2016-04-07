@@ -16,7 +16,7 @@ angular.module("mainController", ["trelloService"])
 			localStorage.removeItem("trello_token");
 			$rootScope.data = [];
 			$rootScope.boards = [];
-			$rooScope.events = [];
+			$rootScope.events = [];
 			$rootScope.userData = {};
 		};
 

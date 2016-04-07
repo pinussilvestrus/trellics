@@ -24,6 +24,8 @@
     <!-- awesome font -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.3/angular-material.min.css">
+
     <!-- Material icons https://www.google.com/design/icons/-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -66,21 +68,16 @@
        </div>
       </div>
 
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#board" class="teal-text lighten-2 active boardNav">Board</a></li>
-              <li class="tab col s3"><a href="#timeline" class="teal-text lighten-2 timeLineNav">Timeline</a></li>
-            </ul>
-          </div>
+      <uib-tabset active="active">
+        <uib-tab index="0" heading="Board">
           <div class="row" id="board">
             <h3 class="center-align">Trello Board</h3>
             <div ng-repeat="list in $root.data track by $index" class="col-xs-12 col-md-3 col-sm-4" style="padding: 0px">
               <list model="list"></list>
             </div>
           </div>
-
-
+        </uib-tab>
+        <uib-tab index="1" heading="Timeline">
           <div id="timeline">
             <h3 class="center-align">Timeline aller Karten</h3>
             <timeline>
@@ -97,12 +94,13 @@
               </timeline-event>
             </timeline>
           </div>
-        </div>
+        </uib-tab>
+      </uib-tabset>
 
-        <!-- info bar -->
-    		<div class="info_bar" ng-hide="hideInfoBar" ng-click="hideInfoBar = true">
-    			<p class="info_bar__element">Falls die Navigation in den Tabs nicht funktionieren, bitte die Seite neuladen!</p>
-    		</div>
+      <!-- info bar
+  		<div class="info_bar" ng-hide="hideInfoBar" ng-click="hideInfoBar = true">
+  			<p class="info_bar__element">Falls die Navigation in den Tabs nicht funktionieren, bitte die Seite neuladen!</p>
+  		</div>-->
     </div>
   </div>
 
@@ -117,6 +115,8 @@
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js"></script>
 
   <script src="https://api.trello.com/1/client.js?key=1602b56189690449876e15570cb2a95f"></script>
 

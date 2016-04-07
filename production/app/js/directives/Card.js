@@ -1,0 +1,1 @@
+angular.module("cardDirective",[]).directive("card",function(){"use strict";return{restrict:"E",templateUrl:"/app/js/directives/Card.html",scope:{model:"="},link:function(scope){}}}).directive("list",function(){"use strict";return{restrict:"E",templateUrl:"/app/js/directives/List.html",scope:{model:"="},link:function(scope){}}});
