@@ -5,7 +5,7 @@
   "description": "andserve website application",
   "scripts": {
     "build": "gulp inject:libs && nodemon server.js",
-    "start": "node server.js"
+    "start": "node production/server.js"
   },
   "repository": {
     "type": "git",

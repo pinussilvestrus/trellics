@@ -33,10 +33,10 @@ gulp.task("minifyCss", function(){
 		var style = gulp.src("./app/styles/*.css")
 			.pipe(minifyCss({compatibility: 'ie8'}))
 			.pipe(gulp.dest("./production/app/styles"));
-		var materialize = gulp.src("./app/lib/materialize.min.css")
+		var libs = gulp.src("./app/lib/**/*.css")
 			.pipe(minifyCss({compatibility: 'ie8'}))
 			.pipe(gulp.dest("./production/app/lib"));
-		return merge(style, materialize);
+		return merge(style, libs);
 	});
 
 gulp.task("minifyJs", function(){
