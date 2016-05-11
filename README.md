@@ -1,1 +1,4 @@
-> simple trello board with angular for andserve
+**improved statistics for your Trello board**
+
+- Material Board
+- Timeline
