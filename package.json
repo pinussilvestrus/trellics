@@ -14,7 +14,7 @@
   "dependencies": {
     "angular-materialize": "^0.1.2",
     "body-parser": "^1.14.2",
-    "emailjs": "^1.0.1",
+    "emailjs": "^2.2.0",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "serve-favicon": "^2.3.0"
